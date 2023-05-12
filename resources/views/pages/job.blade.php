@@ -8,9 +8,11 @@
     <div class="page-job">
         <div class="container">
             <div class="content">
-                <p>
-                    Visi Dan Misi
-                </p>
+                @foreach ($job as $item)
+                    <p>
+                        {!! $item->tugas !!}
+                    </p>
+                @endforeach
             </div>
         </div>
     </div>

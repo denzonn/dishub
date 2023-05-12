@@ -4,12 +4,6 @@
     Dinas Perhubungan Provinsi Sulawesi Selatan
 @endsection
 
-@push('prepend-style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
-        integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endpush
-
 @section('content')
     <!-- Back to top button -->
     <div class="back-to-top"></div>
@@ -39,54 +33,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">SEO Consultancy</h5>
-                            <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-                            <a href="service.html" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">Content Marketing</h5>
-                            <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-                            <a href="service.html" class="btn btn-primary">Read More</a>
+                @foreach ($news as $item)
+                    <div class="col-lg-3 col-md-4 col-12">
+                        <div class="card-service wow fadeInUp">
+                            <div class="header">
+                                <img src="{{ Storage::url($item->photo_news) }}" alt="">
+                            </div>
+                            <div class="body">
+                                <h5 class="text-secondary">{{ $item->judul_news }}</h5>
+                                <p>
+                                    {!! Str::limit($item->isi_news, 100) !!}
+                                </p>
+                                <a href="{{ route('news-detail', $item->slug_news) }}" class="btn btn-primary mt-3">Read
+                                    More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">Keyword Research</h5>
-                            <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-                            <a href="service.html" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">Keyword Research</h5>
-                            <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-                            <a href="service.html" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div> <!-- .container -->
     </div> <!-- .page-section -->
@@ -99,30 +62,16 @@
             </div>
 
             <div class="owl-carousel owl-theme py-3 wow zoomIn" id="owl-carousel1">
-                <div class="item">
-                    <div class="features">
-                        <div class="image">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
+                @foreach ($gallery as $item)
+                    <div class="item">
+                        <div class="features">
+                            <div class="image">
+                                <img src="{{ Storage::url($item->photo_kegiatan) }}" alt="">
+                            </div>
+                            <h5>Kegiatan dilaksanakan di lapangan bakti makassar </h5>
                         </div>
-                        <h5>Kegiatan dilaksanakan di lapangan bakti makassar </h5>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="features">
-                        <div class="image">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
-                        </div>
-                        <h5>Kegiatan dilaksanakan di lapangan bakti makassar </h5>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="features">
-                        <div class="image">
-                            <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
-                        </div>
-                        <h5>Kegiatan dilaksanakan di lapangan bakti makassar </h5>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div> <!-- .container -->
     </div> <!-- .page-section -->
@@ -136,7 +85,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <script>
         $('#owl-carousel1').owlCarousel({
             loop: true,

@@ -1,8 +1,17 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\PejabatController;
+use App\Http\Controllers\Admin\SakipController;
+use App\Http\Controllers\Admin\StruktureController;
+use App\Http\Controllers\Admin\VisiController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +26,37 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+Route::get('/', [HomeController::class, 'index'])
     ->name('home');
-Route::get('/visi-misi', [App\Http\Controllers\HomeController::class, 'visi'])
+Route::get('/visi-misi', [HomeController::class, 'visi'])
     ->name('visi-misi');
-Route::get('/tugas-fungsi', [App\Http\Controllers\HomeController::class, 'job'])
+Route::get('/tugas-fungsi', [HomeController::class, 'job'])
     ->name('job');
-Route::get('/kedudukan', [App\Http\Controllers\HomeController::class, 'kedudukan'])
+Route::get('/kedudukan', [HomeController::class, 'kedudukan'])
     ->name('kedudukan');
-Route::get('/struktur-organisasi', [App\Http\Controllers\HomeController::class, 'struktur'])
+Route::get('/struktur-organisasi', [HomeController::class, 'struktur'])
     ->name('struktur');
-Route::get('/pejabat-struktural', [App\Http\Controllers\HomeController::class, 'pejabat'])
+Route::get('/pejabat-struktural', [HomeController::class, 'pejabat'])
     ->name('pejabat');
-Route::get('/sakip', [App\Http\Controllers\HomeController::class, 'sakip'])
+Route::get('/sakip', [HomeController::class, 'sakip'])
     ->name('sakip');
-Route::get('/news', [App\Http\Controllers\HomeController::class, 'news'])
+Route::get('/news', [HomeController::class, 'news'])
     ->name('news');
+Route::get('/news-detail/{slug}', [HomeController::class, 'news_detail'])
+    ->name('news-detail');
+Route::get('/gallery-kegiatan', [HomeController::class, 'gallery'])
+    ->name('gallery');
+
+Route::prefix('admin')
+    ->group(function () {
+
+        Route::get('/dashboard', [DashboardController::class, 'index'])
+            ->name('admin-dashboard');
+        Route::resource('gallery', GalleryController::class);
+        Route::resource('news', NewsController::class);
+        Route::resource('visi', VisiController::class);
+        Route::resource('job', JobController::class);
+        Route::resource('struktur', StruktureController::class);
+        Route::resource('pejabat', PejabatController::class);
+        Route::resource('sakip', SakipController::class);
+    });

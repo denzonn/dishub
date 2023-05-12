@@ -3,7 +3,7 @@
         <div class="row mb-5">
             <div class="col-12 col-md-6 col-lg-4 py-3">
                 <div class="image">
-                    <img src="/img/logoperhubungan.png" alt="">
+                    <img src="{{ asset('frontend/img/logoperhubungan.png') }}" alt="">
                     <div>Website Resmi Dinas Perhubungan Kabupaten Bangkalan, Provinsi Jawa Timur</div>
                 </div>
             </div>
