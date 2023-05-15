@@ -63,6 +63,14 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Galery</span></a>
     </li>
+    <li class="nav-item">
+        <a href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link"><i
+                class="fa-solid fa-arrow-right-from-bracket"></i> {{ __('Logout') }}</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </li>
 
 </ul>
 <!-- End of Sidebar -->

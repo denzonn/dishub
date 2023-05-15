@@ -48,8 +48,8 @@ Route::get('/gallery-kegiatan', [HomeController::class, 'gallery'])
     ->name('gallery');
 
 Route::prefix('admin')
+    ->middleware(['auth', 'isAdmin'])
     ->group(function () {
-
         Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('admin-dashboard');
         Route::resource('gallery', GalleryController::class);

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pejabat_structurals', function (Blueprint $table) {
+        Schema::create('jabatans', function (Blueprint $table) {
             $table->id();
-            $table->string('photo_pejabat');
-            $table->string('nama_pejabat');
-            $table->integer('kode_jabatan');
-            $table->string('jabatan_pejabat');
-            $table->integer('nip_pejabat');
+            $table->string('jabatan');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pejabat_structurals');
+        Schema::dropIfExists('jabatans');
     }
 };

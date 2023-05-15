@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             VisiSeeder::class,
             JobSeeder::class,
             StructureSeeder::class,
+            AdminSeeder::class,
+            JabatanSeeder::class,
         ]);
     }
 }

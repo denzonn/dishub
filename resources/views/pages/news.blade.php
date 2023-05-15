@@ -16,7 +16,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="date">
-                                            {{ $tanggal }}
+                                            {{ $tanggal ?? '' }}
                                         </div>
                                         <img src="{{ Storage::url($item->photo_news) }}" alt="">
                                         <div class="news">

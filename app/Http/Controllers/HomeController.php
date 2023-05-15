@@ -63,6 +63,7 @@ class HomeController extends Controller
     public function news()
     {
         $news = News::all();
+        $tanggal = '';
 
         foreach ($news as $new) {
             $tanggal = date('d F Y', strtotime($new->created_at));
