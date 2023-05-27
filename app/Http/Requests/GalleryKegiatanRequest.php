@@ -24,7 +24,7 @@ class GalleryKegiatanRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo_kegiatan' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photo_kegiatan' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'judul_kegiatan' => 'required|string',
         ];
     }

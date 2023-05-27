@@ -1461,7 +1461,6 @@ a.text-dark:focus {
   .page-section .row {
     display: flex;
     flex-wrap: wrap;
-    align-items: center; /* menyejajarkan elemen ke tengah-tengah sumbu Y */
     justify-content: center; /* menyejajarkan elemen ke tengah-tengah sumbu X */
   }
 
@@ -1503,6 +1502,24 @@ a.text-dark:focus {
 .page-banner.home-banner img {
   height: 75vh;
   object-fit: cover;
+}
+
+.page-banner img.windows {
+  display: block;
+}
+
+.page-banner img.phone {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .page-banner img.windows {
+    display: none !important;
+  }
+
+  .page-banner img.phone {
+    display: block !important;
+  }
 }
 
 .page-banner.home-banner .img-fluid {
@@ -1970,6 +1987,7 @@ a.text-dark:focus {
   height: 30vh;
   border-radius: 5px;
   object-fit: cover;
+  object-position: center 40%;
 }
 
 .page-pejabat .content .card {
@@ -1985,14 +2003,29 @@ a.text-dark:focus {
   text-align: center;
 }
 
-.page-pejabat .content .card-body .desc .name {
-  font-size: 1.2rem;
-  color: #0077b5;
+@media (max-width: 767px) {
+  .page-pejabat .content .card-body .desc .name {
+    font-size: 0.9rem;
+    color: #0077b5;
+  }
+  .page-pejabat .content .card-body .desc .jabatan {
+    font-size: 0.7rem;
+    color: #7d7a99;
+  }
+  .page-pejabat .content .card-body .desc .nip {
+    font-size: 0.8rem;
+  }
 }
 
-.page-pejabat .content .card-body .desc .jabatan {
-  font-size: 1rem;
-  color: #7d7a99;
+@media (min-width: 767px) {
+  .page-pejabat .content .card-body .desc .name {
+    font-size: 1.2rem;
+    color: #0077b5;
+  }
+  .page-pejabat .content .card-body .desc .jabatan {
+    font-size: 1rem;
+    color: #7d7a99;
+  }
 }
 
 .page-news {
@@ -2195,6 +2228,67 @@ a.text-dark:focus {
   text-align: center;
 }
 
+.page-pengaduan {
+  margin: 50px 0 0 0;
+}
+
+.page-pengaduan a {
+  text-decoration: none;
+}
+
+.page-pengaduan {
+  border: none;
+}
+
+.page-pengaduan .pengaduan {
+  transition: all 0.4s ease;
+}
+
+.page-pengaduan .pengaduan img {
+  width: 10rem;
+}
+
+@media (max-width: 767px) {
+  .page-pengaduan .pengaduan img {
+    width: 7rem;
+  }
+
+  .page-pengaduan .title {
+    font-size: 1rem !important;
+    color: #000;
+    font-family: 'Poppins', serif;
+  }
+}
+
+.page-pengaduan .pengaduan:hover {
+  transform: translateY(-15px) !important;
+}
+
+.page-pengaduan .title {
+  font-size: 1.2rem;
+  color: #000;
+  font-family: 'Poppins', serif;
+}
+
+.page-pengaduan label {
+  font-weight: 700;
+  color: #5b6475;
+}
+
+.page-pengaduan .star {
+  font-weight: 700;
+  color: #ff0000;
+}
+
+.page-survey {
+  margin: 70px 0 0 0;
+  font-family: 'Poppins', serif;
+}
+
+.page-survey .star {
+  color: #ff0000;
+}
+
 .page-footer {
   position: relative;
   display: block;
@@ -2204,6 +2298,8 @@ a.text-dark:focus {
   padding-top: 80px;
   padding-bottom: 16px;
   background-color: #2d2b3a;
+  background-attachment: fixed;
+  background-position: top;
 }
 
 .page-footer p a {

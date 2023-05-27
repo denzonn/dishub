@@ -29,8 +29,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Profil</span>
         </a>
@@ -63,6 +63,19 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Galery</span></a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin-pengaduan.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Pengaduan</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin-survey.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Survey</span></a>
+    </li>
+
     <li class="nav-item">
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link"><i

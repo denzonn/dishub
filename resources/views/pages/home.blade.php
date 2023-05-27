@@ -12,7 +12,9 @@
         <div class="page-banner home-banner">
             <div class="owl-carousel owl-theme">
                 <div class="item">
-                    <img src="{{ asset('frontend/img/berita.jpg') }}" alt="">
+                    <img src="{{ asset('frontend/img/background Gubernur Sulsel.png') }}" alt="" class="windows">
+                    <img src="{{ asset('frontend/img/background Gubernur Sulsel Phone.png') }}" alt="" class="phone"
+                        style="display: none">
                 </div>
                 <div class="item">
                     <img src="{{ asset('frontend/img/brand_01.png') }}" alt="">

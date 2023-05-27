@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\GalleryKegiatan;
 use App\Models\Job;
 use App\Models\News;
+use App\Models\PejabatStructural;
 use App\Models\Sakip;
 use App\Models\StructureOrganisation;
 use App\Models\VisiMisi;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -50,7 +50,10 @@ class HomeController extends Controller
     }
     public function pejabat()
     {
-        return view('pages.pejabat');
+        $pejabat = PejabatStructural::all();
+        return view('pages.pejabat', [
+            'pejabat' => $pejabat
+        ]);
     }
     public function sakip()
     {

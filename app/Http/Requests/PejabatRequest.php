@@ -24,10 +24,10 @@ class PejabatRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'nama_pejabat' => 'required|string',
-            // 'jabatan_id' => 'required|integer|exists:jabatans,id',
-            // 'photo_pejabat' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            // 'nip_pejabat' => 'required|numeric',
+            'nama_pejabat' => 'required|string',
+            'jabatan_id' => 'required|integer|exists:jabatans,id',
+            'photo_pejabat' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'nip_pejabat' => 'required|numeric',
         ];
     }
 }

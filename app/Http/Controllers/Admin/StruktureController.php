@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StructureRequest;
 use App\Models\StructureOrganisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -76,7 +77,7 @@ class StruktureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StructureRequest $request, $id)
     {
         $photo = StructureOrganisation::findOrFail($id);
 

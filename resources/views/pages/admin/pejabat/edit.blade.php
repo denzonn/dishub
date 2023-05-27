@@ -37,6 +37,15 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Silahkan Update Data Pejabat</h1>
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 w-75">
                         <div class="card-body">
@@ -44,13 +53,23 @@
                                 method="post">
                                 @method('PUT')
                                 @csrf
-                                <label>Judul Berita</label>
-                                <input type="text" class="form-control mb-4" name="judul_news"
-                                    value="{{ $news->judul_news }}" required>
-                                <textarea name="isi_news" id="editor" required>{!! $news->isi_news !!}</textarea>
-                                <label>Foto Lama</label>
-                                <img src="{{ Storage::url($news->photo_news) }}" alt="" style="width: 100px">
-                                <input type="file" class="mt-4" name="photo_news">
+                                <label>Nama Pejabat</label>
+                                <input type="text" class="form-control mb-4" name="nama_pejabat"
+                                    value="{{ $pejabat->nama_pejabat }}" required>
+                                <label>NIP Pejabat</label>
+                                <input type="number" class="form-control mb-4" name="nip_pejabat"
+                                    value="{{ $pejabat->nip_pejabat }}" required>
+                                <label>Jabatan Pejabat</label>
+                                <select name="jabatan_id" class="form-control">
+                                    <option value="{{ $pejabat->jabatan_id }}" selected>{{ $pejabat->jabatan->jabatan }}
+                                    </option>
+                                    @foreach ($jabatan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->jabatan }}</option>
+                                    @endforeach
+                                </select>
+                                <input type="file" class="mt-5" name="photo_pejabat">
+                                <div class="text-muted mt-2">*Jika tidak ingin mengubah foto tidak perlu mengupload lagi
+                                </div>
                                 <button class="btn btn-primary w-100 mt-5" type="submit">Simpan</button>
                             </form>
                         </div>

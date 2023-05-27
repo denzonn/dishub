@@ -7,6 +7,7 @@ use App\Http\Requests\PejabatRequest;
 use App\Models\Jabatan;
 use App\Models\PejabatStructural;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PejabatController extends Controller
 {
@@ -45,8 +46,6 @@ class PejabatController extends Controller
     public function store(PejabatRequest $request)
     {
         $data = $request->all();
-
-        dd($data['photo_pejabat']);
 
         if ($request->hasFile('photo_pejabat')) {
             $images = $request->file('photo_pejabat');
@@ -87,7 +86,7 @@ class PejabatController extends Controller
         $pejabat = PejabatStructural::findOrFail($id);
         return view('pages.admin.pejabat.edit', [
             'pejabat' => $pejabat,
-            'jabatan' => Jabatan::all(),
+            'jabatan' => Jabatan::all()->except($pejabat->jabatan_id),
         ]);
     }
 
@@ -98,9 +97,29 @@ class PejabatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PejabatRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $pejabat = PejabatStructural::findOrFail($id);
+
+        if ($request->hasFile('photo_pejabat')) {
+            Storage::disk('public')->delete($pejabat->photo_pejabat);
+
+            $images = $request->file('photo_pejabat');
+
+            $extension = $images->getClientOriginalExtension();
+
+            $random = \Str::random(10);
+            $file_name = "pejabat" . $random . "." . $extension;
+
+            $data['photo_pejabat'] = $images->storeAs('pejabat', $file_name, 'public');
+        } else {
+            $data['photo_pejabat'] = $pejabat->photo_pejabat;
+        }
+
+        $pejabat->update($data);
+
+        return redirect()->route('pejabat.index');
     }
 
     /**
@@ -111,6 +130,8 @@ class PejabatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PejabatStructural::findOrFail($id)->delete();
+
+        return redirect()->route('pejabat.index');
     }
 }

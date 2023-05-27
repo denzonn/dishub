@@ -91,7 +91,7 @@ class GalleryController extends Controller
      * @param  \App\Models\GalleryKegiatan  $galleryKegiatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GalleryKegiatanRequest $request, $id)
     {
         $data = $request->all();
         $gallery = GalleryKegiatan::findOrFail($id);

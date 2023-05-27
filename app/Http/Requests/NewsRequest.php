@@ -24,7 +24,7 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo_news' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photo_news' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'judul_news' => 'required|string',
             'isi_news' => 'required',
         ];

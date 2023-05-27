@@ -36,7 +36,15 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Edit Sakip</h1>
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 w-75">
                         <div class="card-body">

@@ -1,10 +1,11 @@
-<footer class="page-footer bg-image" style="background-image: url(../assets/img/world_pattern.svg);">
+<footer class="page-footer bg-image"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ asset('frontend/img/flyover.png') }});">
     <div class="container">
         <div class="row mb-5">
             <div class="col-12 col-md-6 col-lg-4 py-3">
                 <div class="image">
                     <img src="{{ asset('frontend/img/logoperhubungan.png') }}" alt="">
-                    <div>Website Resmi Dinas Perhubungan Kabupaten Bangkalan, Provinsi Jawa Timur</div>
+                    <div>Website Resmi Dinas Perhubungan Provinsi Sulawesi Selatan</div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 py-3">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VisiRequest;
 use App\Models\VisiMisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -75,7 +76,7 @@ class VisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VisiRequest $request, $id)
     {
         $data = $request->all();
         $photo = VisiMisi::findOrFail($id);

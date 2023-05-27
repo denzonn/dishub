@@ -8,7 +8,11 @@ use App\Http\Controllers\Admin\PejabatController;
 use App\Http\Controllers\Admin\SakipController;
 use App\Http\Controllers\Admin\StruktureController;
 use App\Http\Controllers\Admin\VisiController;
+use App\Http\Controllers\Admin\PengaduanController as AdminPengaduanController;
+use App\Http\Controllers\Admin\SurveyController;
+use App\Http\Controllers\FormSurveyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PengaduanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +51,18 @@ Route::get('/news-detail/{slug}', [HomeController::class, 'news_detail'])
 Route::get('/gallery-kegiatan', [HomeController::class, 'gallery'])
     ->name('gallery');
 
+Route::middleware(['auth'])
+    ->group(function () {
+        Route::resource('pengaduan', PengaduanController::class);
+        Route::get('/pengaduan-status', [PengaduanController::class, 'status'])
+            ->name('pengaduan.status');
+
+        Route::get('/form-survey', [FormSurveyController::class, 'index'])
+            ->name('form-survey');
+        Route::post('/form-survey', [FormSurveyController::class, 'store'])
+            ->name('form-survey-store');
+    });
+
 Route::prefix('admin')
     ->middleware(['auth', 'isAdmin'])
     ->group(function () {
@@ -59,4 +75,6 @@ Route::prefix('admin')
         Route::resource('struktur', StruktureController::class);
         Route::resource('pejabat', PejabatController::class);
         Route::resource('sakip', SakipController::class);
+        Route::resource('admin-pengaduan', AdminPengaduanController::class);
+        Route::resource('admin-survey', SurveyController::class);
     });

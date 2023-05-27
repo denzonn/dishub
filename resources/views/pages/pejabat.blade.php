@@ -8,20 +8,22 @@
     <div class="page-pejabat">
         <div class="container">
             <div class="content">
-                <h4>Data Pejabat</h4>
+                <h4 class="text-center">Data Pejabat</h4>
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <img src="/img/berita.jpg" alt="">
-                                <div class="desc">
-                                    <div class="name">Prof Nurdin Abdullah</div>
-                                    <div class="jabatan">Gubernur</div>
-                                    <div class="nip">19213142</div>
+                    @foreach ($pejabat as $item)
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="{{ Storage::url($item->photo_pejabat) }}" alt="">
+                                    <div class="desc">
+                                        <div class="name">{{ $item->nama_pejabat }}</div>
+                                        <div class="jabatan">{{ $item->jabatan->jabatan }}</div>
+                                        <div class="nip">{{ $item->nip_pejabat }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ class VisiRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'visi' => 'required',
         ];
     }
