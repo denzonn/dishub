@@ -8,7 +8,7 @@
     <div class="page-location">
         <div class="container">
             <div class="content">
-                <p>Dinas Perhubungan Provinsi Jawa Timur</p>
+                <p>Dinas Perhubungan Provinsi Sulawesi Selatan</p>
                 <p>Kedudukan :</p>
                 <p>Dinas Perhubungan merupakan unsur pelaksana urusan pemerintahan di bidang perhubungan, dipimpin oleh
                     seorang kepala dinas, yang berkedudukan di bawah dan bertanggung jawab kepada Gubernur melalui

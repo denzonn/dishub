@@ -22,7 +22,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Beranda</a>
                 </li>
                 <li
-                    class="nav-item dropdown {{ request()->is('visi-misi*', 'job*', 'kedudukan*', 'struktur*', 'pejabat*', 'pegawai*') ? 'active' : '' }}">
+                    class="nav-item dropdown {{ request()->is('visi-misi*', 'job*', 'kedudukan*', 'struktur*', 'pejabat*', 'pegawai*', 'unit-kerja*', 'denah*') ? 'active' : '' }}">
                     <div class="dropdown nav-link ">
                         <a class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -39,10 +39,13 @@
                             <a href="{{ route('struktur') }}"
                                 class="dropdown-item {{ request()->is('struktur*') ? 'active' : '' }}">Struktur
                                 Organisasi</a>
+                            <a href="{{ route('denah') }}"
+                                class="dropdown-item {{ request()->is('denah*') ? 'active' : '' }}">Denah Kantor</a>
                             <a href="{{ route('pejabat') }}"
                                 class="dropdown-item {{ request()->is('pejabat*') ? 'active' : '' }}">Pejabat
                                 Struktural</a>
-                            <a class="dropdown-item {{ request()->is('pegawai*') ? 'active' : '' }}">Pegawai</a>
+                            <a href="{{ route('unit-kerja') }}"
+                                class="dropdown-item {{ request()->is('unit-kerja*') ? 'active' : '' }}">Unit Kerja</a>
                         </div>
                     </div>
                 </li>
@@ -50,11 +53,11 @@
                     <div class="dropdown nav-link ">
                         <a class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            Kegiatan
+                            Program Kegiatan
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <a href="{{ route('news') }}"
-                                class="dropdown-item {{ request()->is('news*') ? 'active' : '' }}">Berita</a>
+                                class="dropdown-item {{ request()->is('news*') ? 'active' : '' }}">Berita Kegiatan</a>
                             <a href="{{ route('gallery') }}"
                                 class="dropdown-item {{ request()->is('gallery*') ? 'active' : '' }}">Gallery</a>
                         </div>
@@ -80,6 +83,29 @@
                     <a class="nav-link {{ request()->is('sakip*') ? 'active' : '' }}"
                         href="{{ route('sakip') }}">Dokument & Publikasi</a>
                 </li>
+                @php
+                    $tautan = App\Models\Tautan::all();
+                @endphp
+                @foreach ($tautan as $item)
+                    <li class="nav-item dropdown {{ request()->is() ? 'active' : '' }}">
+                        <div class="dropdown nav-link ">
+                            <a class="dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Tautan
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                                <a href="{{ $item->link_tautan }}"
+                                    class="dropdown-item {{ request()->is() ? 'active' : '' }}">{{ $item->nama_tautan }}</a>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('sakip*') ? 'active' : '' }}"
+                        href="{{ route('mitra-kerja') }}">Mitra Kerja</a>
+                </li>
+
                 {{-- Jika sdh auth maka tidak usah tampilkan --}}
                 @guest
                     <li class="nav-item">

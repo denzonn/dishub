@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pengaduans', function (Blueprint $table) {
             $table->id();
+            $table->string('nik_pengadu');
             $table->string('nama_pengadu');
             $table->string('email_pengadu');
             $table->string('no_hp_pengadu');

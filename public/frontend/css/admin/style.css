@@ -1,0 +1,39 @@
+@media (max-width: 767px) {
+  .survey {
+    text-align: center;
+  }
+
+  .survey a {
+    color: #6c55f9;
+    text-decoration: none;
+    font-size: 1.3rem;
+  }
+
+  .survey i {
+    color: #6c55f9;
+    text-decoration: none;
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 767px) {
+  .survey {
+    text-align: center;
+  }
+
+  .survey a {
+    color: #6c55f9;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+
+  .survey i {
+    color: #6c55f9;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+}
+
+.survey span {
+  font-family: 'Popins', serif;
+}

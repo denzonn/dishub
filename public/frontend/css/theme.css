@@ -1123,10 +1123,6 @@ a.text-dark:focus {
   z-index: 1080;
 }
 
-.navbar.sticky.fixed ~ * {
-  margin-top: 70px;
-}
-
 .navbar.sticky.fixed {
   position: fixed;
   top: 0;
@@ -1487,7 +1483,6 @@ a.text-dark:focus {
 
 .page-banner {
   position: relative;
-  margin-bottom: 16px;
   height: 320px;
   background-color: #f6f5fc;
   color: #645f88;
@@ -1579,6 +1574,15 @@ a.text-dark:focus {
   font-size: 14px;
 }
 
+.running-text {
+  padding-top: 10px;
+  background-color: #262a9d;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
 .home-banner .row > *:first-child {
   padding-left: 8%;
 }
@@ -1624,6 +1628,14 @@ a.text-dark:focus {
   text-align: center;
   background-color: #fff;
   color: #6c55f9;
+}
+
+.unit {
+  transition: all 0.3s ease-in-out;
+}
+
+.unit:hover {
+  transform: translateY(-10px);
 }
 
 .card-service .header {
@@ -2308,7 +2320,7 @@ a.text-dark:focus {
 }
 
 .page-footer .image img {
-  width: 3rem;
+  width: 2rem;
   height: auto;
 }
 

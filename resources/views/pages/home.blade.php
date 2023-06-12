@@ -12,16 +12,29 @@
         <div class="page-banner home-banner">
             <div class="owl-carousel owl-theme">
                 <div class="item">
-                    <img src="{{ asset('frontend/img/background Gubernur Sulsel.png') }}" alt="" class="windows">
-                    <img src="{{ asset('frontend/img/background Gubernur Sulsel Phone.png') }}" alt="" class="phone"
+                    <img src="{{ asset('frontend/img/backgorund Gubernul Sulsel.png') }}" alt="" class="windows">
+                    <img src="{{ asset('frontend/img/backgorund Gubernul Sulsel Phone.png') }}" alt="" class="phone"
                         style="display: none">
                 </div>
                 <div class="item">
-                    <img src="{{ asset('frontend/img/brand_01.png') }}" alt="">
+                    <img src="{{ asset('frontend/img/berakhlak.png') }}" alt="" class="windows">
                 </div>
+                @foreach ($carousel as $item)
+                    <div class="item">
+                        <img src="{{ Storage::url($item->photo) }}" alt="">
+                    </div>
+                @endforeach
             </div>
             <a href="#gallery" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
         </div>
+    </div>
+
+    <div class="running-text">
+        <marquee behavior="" direction="">
+            @foreach ($running as $item)
+                {!! $item->text !!}
+            @endforeach
+        </marquee>
     </div>
 
     <div class="page-section">
@@ -31,7 +44,7 @@
                     <i class="fa-solid fa-calendar"></i> Berita Terbaru
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 text-end">
-                    <a href="#" class="next">Selanjutnya > ></a>
+                    <a href="{{ route('news') }}" class="next">Selanjutnya > ></a>
                 </div>
             </div>
             <div class="row">
@@ -112,6 +125,8 @@
             margin: 10,
             nav: false,
             dots: false,
+            autoplay: true,
+            autoplayTimeout: 5000,
             responsive: {
                 0: {
                     items: 1

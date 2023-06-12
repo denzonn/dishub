@@ -23,6 +23,9 @@
                 <div class="card-body">
                     <form action="{{ route('pengaduan.store') }}" enctype="multipart/form-data" method="post">
                         @csrf
+                        <label>NIK <span class="star">*</span></label>
+                        <input type="number" class="form-control mb-4" name="nik_pengadu"
+                            placeholder="Nomor Induk Kependudukan" required>
                         <label>Nama <span class="star">*</span></label>
                         <input type="text" class="form-control mb-4" name="nama_pengadu" placeholder="Nama Lengkap"
                             required>
@@ -36,8 +39,14 @@
                             required>
                         <label>Pengaduan <span class="star">*</span></label>
                         <textarea name="isi_pengaduan" id="editor" cols="30" rows="10"></textarea>
-                        <label>Foto <span class="star">*</span></label>
-                        <input type="file" class="mt-4" name="photo_pengaduan" required>
+                        <label class="mt-4">Foto Aduan Anda <span class="star">*</span></label>
+                        <div>
+                            <input type="file" class="form-control-file mt-4" name="photo_pengaduan" required>
+                        </div>
+                        <label class="mt-4">Foto KTP Anda <span class="star">*</span></label>
+                        <div>
+                            <input type="file" class="form-control-file mt-4" name="photo_ktp" required>
+                        </div>
                         <button class="btn btn-primary w-100 mt-5" type="submit">Simpan</button>
                     </form>
                 </div>

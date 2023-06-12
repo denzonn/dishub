@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->string('pekerjaan');
             $table->string('email');
-            $table->foreignId('pertanyaan_id')->constrained('pertanyaans')->onDelete('cascade');
-            $table->foreignId('jawaban_id')->constrained('jawabans')->onDelete('cascade');
+            $table->string('usulan')->nullable();
             $table->timestamps();
         });
     }

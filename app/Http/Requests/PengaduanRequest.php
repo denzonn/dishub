@@ -24,12 +24,14 @@ class PengaduanRequest extends FormRequest
     public function rules()
     {
         return [
+            'nik_pengadu' => 'required|numeric|digits:16',
             'nama_pengadu' => 'required',
             'email_pengadu' => 'required|email',
             'no_hp_pengadu' => 'required|numeric',
             'judul_pengaduan' => 'required',
             'isi_pengaduan' => 'required',
             'photo_pengaduan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'photo_ktp' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ];
     }
 }

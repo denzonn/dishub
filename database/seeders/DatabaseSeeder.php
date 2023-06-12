@@ -26,6 +26,11 @@ class DatabaseSeeder extends Seeder
             StructureSeeder::class,
             AdminSeeder::class,
             JabatanSeeder::class,
+            OptionSeeder::class,
+            RunningSeeder::class,
+            BidangSeeder::class,
+            PertanyaanSeeder::class,
+            DenahSeeder::class,
         ]);
     }
 }

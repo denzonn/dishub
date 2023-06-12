@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::table('pengaduans', function (Blueprint $table) {
             $table->string('photo_pengaduan')->after('isi_pengaduan');
-            $table->string('status_pengaduan')->default('pending')->after('photo_pengaduan');
+            $table->string('photo_ktp')->after('photo_pengaduan');
+            $table->string('status_pengaduan')->default('belum diproses')->after('photo_pengaduan');
         });
     }
 
@@ -27,8 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pengaduans', function (Blueprint $table) {
-            $table->dropColumn('photo');
-            $table->dropColumn('status');
+            $table->dropColumn('photo_pengaduan');
+            $table->dropColumn('photo_ktp');
+            $table->dropColumn('status_pengaduan');
         });
     }
 };

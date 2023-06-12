@@ -32,37 +32,85 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Hasil Survey Masyarakat</h1>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header">
-                            <a href="{{ route('admin-survey.create') }}" class="btn btn-primary w-100">Pertanyaan</a>
+                    <h3 class="text-center mb-lg-3">Survey Masyarakat</h3>
+                    <a href="{{ route('admin-survey-option') }}" class="btn btn-primary">TAMBAH OPSI</a>
+                    <div class="row survey">
+                        <div class="col-12 col-lg-6 mt-2">
+                            <a href="{{ route('admin-survey-lalu-lintas.create') }}">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="fa-solid fa-traffic-light"></i>
+                                        <span>Lalu
+                                            Lintas</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-6 mt-2">
+                            <a href="{{ route('admin-survey-kereta.create') }}">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="fa-solid fa-traffic-light"></i>
+                                        <span>Kereta Api</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-6 mt-2">
+                            <a href="{{ route('admin-survey-pelayaran.create') }}">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="fa-solid fa-traffic-light"></i>
+                                        <span>Pelayaran</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-6 mt-2">
+                            <a href="{{ route('admin-survey-penunjang.create') }}">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="fa-solid fa-traffic-light"></i>
+                                        <span>Penunjang Urusan Pemerintahan Umum</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {{-- Table --}}
+                    <div class="card shadow mb-4 mt-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Survey</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th style="width: 10%">No</th>
-                                            <th style="width: 30%">Nama</th>
-                                            <th style="width: 20%">Email</th>
-                                            <th style="width: 20%">Jenis Kelamin</th>
-                                            <th style="width: 20%">Aksi</th>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>Bobot</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($survey as $index => $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td>{{ $totals[$index] }}</td>
+                                            </tr>
+                                        @endforeach
 
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
+                        <!-- /.container-fluid -->
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->

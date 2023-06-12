@@ -9,24 +9,13 @@ class Survey extends Model
 {
     use HasFactory;
 
-    protected $table = 'survey';
+    protected $table = 'surveys';
 
     protected $fillable = [
         'nama',
         'jenis_kelamin',
         'pekerjaan',
         'email',
-        'pertanyaan_id',
-        'jawaban_id',
+        'usulan',
     ];
-
-    public function pertanyaan()
-    {
-        return $this->belongsTo(Pertanyaan::class);
-    }
-
-    public function jawaban()
-    {
-        return $this->belongsTo(Jawaban::class);
-    }
 }

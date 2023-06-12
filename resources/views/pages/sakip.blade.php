@@ -30,7 +30,9 @@
                                             <td>{{ $item->judul_sakip ?? '' }}</td>
                                             <td>
                                                 <a href="{{ Storage::url($item->file_sakip) }}" target="_blank"
-                                                    class="btn"><i class="fa-solid fa-file"></i></a>
+                                                    class="btn btn-success">
+                                                    Download
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

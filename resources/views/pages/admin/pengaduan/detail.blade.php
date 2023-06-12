@@ -51,9 +51,10 @@
                                 <div class="data">
                                     <label for="">Data Diri Pengaju :
                                         <ul>
-                                            <li>{{ $pengaduan->nama_pengadu }}</li>
-                                            <li>{{ $pengaduan->email_pengadu }}</li>
-                                            <li>{{ $pengaduan->no_hp_pengadu }}</li>
+                                            <li>NIK : {{ $pengaduan->nik_pengadu }}</li>
+                                            <li>Nama : {{ $pengaduan->nama_pengadu }}</li>
+                                            <li>Email : {{ $pengaduan->email_pengadu }}</li>
+                                            <li>No HP : {{ $pengaduan->no_hp_pengadu }}</li>
                                         </ul>
                                     </label>
                                 </div>
@@ -68,7 +69,6 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <select name="status_pengaduan" class="form-control option">
-                                            <option value="cancel">Cancel</option>
                                             <option value="proses">Proses</option>
                                         </select>
                                     </div>

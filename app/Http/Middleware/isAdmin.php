@@ -16,7 +16,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->roles != 'ADMIN') {
+        if ($request->user()->roles != 'ADMIN' && $request->user()->roles != 'SUPERADMIN') {
             return redirect()->route('home');
         }
 

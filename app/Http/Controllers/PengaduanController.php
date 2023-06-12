@@ -34,7 +34,18 @@ class PengaduanController extends Controller
             $data['photo_pengaduan'] = $images->storeAs('pengaduan', $file_name, 'public');
         }
 
-        $data['status'] = 'pending';
+        if ($request->hasFile('photo_ktp')) {
+            $images = $request->file('photo_ktp');
+
+            $extension = $images->getClientOriginalExtension();
+
+            $random = \Str::random(10);
+            $file_name = "ktp" . $random . "." . $extension;
+
+            $data['photo_ktp'] = $images->storeAs('ktp', $file_name, 'public');
+        }
+
+        $data['status'] = 'belum diproses';
 
         Pengaduan::create($data);
 
@@ -52,7 +63,7 @@ class PengaduanController extends Controller
 
     public function status()
     {
-        $pengaduan = Pengaduan::all();
+        $pengaduan = Pengaduan::all()->except('photo_ktp');
 
         return view('pages.user.pengaduan.status', [
             'pengaduan' => $pengaduan

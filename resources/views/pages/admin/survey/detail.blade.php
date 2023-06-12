@@ -40,7 +40,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             {{-- Tambah Soal --}}
-                            <form action="{{ route('form-survey-store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin-survey.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-md-12">
                                     @if ($errors->any())
@@ -61,30 +61,45 @@
                                             </div>
                                             <div class="row">
                                                 <div class="question-container col-12 px-0">
-                                                    <div class="question-group px-0 mb-3">
-                                                        <div class="row">
-                                                            <div class="col-11">
-                                                                <input type="text" name="question_name[]"
-                                                                    class="form-control" placeholder="Nama question" />
-                                                            </div>
-                                                            <div class="col-1">
-                                                                <button type="button"
-                                                                    class="btn btn-danger remove-question">
-                                                                    Hapus
-                                                                </button>
+                                                    @forelse ($pertanyaan as $item)
+                                                        <div class="question-group px-0 mb-3">
+                                                            <div class="row">
+                                                                <div class="col-11">
+                                                                    <input type="text" name="pertanyaan[]"
+                                                                        class="form-control" placeholder="Nama question"
+                                                                        value="{{ $item->pertanyaan }}" />
+                                                                </div>
+                                                                <div class="col-1">
+                                                                    <a
+                                                                        href="{{ route('admin-survey-store-delete-ans', $item->id) }}">
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger remove-question"
+                                                                            @if ($pertanyaan->count() === 1) disabled @endif>
+                                                                            Hapus
+                                                                        </button>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-12 mt-2">
+                                                                    @foreach ($option as $item)
+                                                                        <ul style="font-size: 1.1rem">
+                                                                            <li>{{ $item->option }}</li>
+                                                                        </ul>
+                                                                    @endforeach
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @empty
+                                                    @endforelse
                                                 </div>
                                                 <div class="col-12 px-0">
-                                                    <button type="button" class="btn btn-success add-question">Tambah
+                                                    <button type="button" class="btn btn-primary add-question">Tambah
                                                         Pertanyaan
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success btn-block px-5">
+                                    <button type="submit" class="btn btn-primary btn-block px-5">
                                         Simpan Pertanyaan
                                     </button>
                                 </div>
@@ -127,11 +142,21 @@
                 '<div class="question-group px-0 mb-3">' +
                 '<div class="row">' +
                 '<div class="col-11">' +
-                '<input type="text" name="question_name[]" class="form-control" placeholder="Nama question">' +
+                '<input type="text" name="pertanyaan[]" class="form-control" placeholder="Nama question">' +
                 '</div>' +
-
                 '<div class="col-1">' +
-                '<button type="button" class="btn btn-danger remove-question">Hapus</button>' +
+                '<form action="{{ route('admin-survey.destroy', $item->id) }}" method="post">' +
+                '@csrf' +
+                '@method('delete')' +
+                '<button type="submit" class="btn btn-danger remove-question">Hapus</button>' +
+                '</form>' +
+                '</div>' +
+                '<div class="col-12 mt-2">' +
+                '@foreach ($option as $item)' +
+                '<ul style="font-size: 1.1rem">' +
+                '<li>{{ $item->option }}</li>' +
+                '</ul>' +
+                '@endforeach' +
                 '</div>' +
                 '</div>' +
                 '</div>'

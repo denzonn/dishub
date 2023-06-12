@@ -37,43 +37,89 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Profil :</h6>
-                <a href="{{ route('visi.index') }}" class="collapse-item" href="buttons.html">Visi & Misi</a>
-                <a href="{{ route('job.index') }}" class="collapse-item" href="cards.html">Tugas & Fungsi</a>
-                <a href="{{ route('struktur.index') }}" class="collapse-item" href="cards.html">Struktur Organisasi</a>
-                <a href="{{ route('pejabat.index') }}" class="collapse-item" href="cards.html">Pejabat Struktural</a>
+                <a href="{{ route('visi.index') }}" class="collapse-item">Visi & Misi</a>
+                <a href="{{ route('job.index') }}" class="collapse-item">Tugas & Fungsi</a>
+                <a href="{{ route('struktur.index') }}" class="collapse-item">Struktur Organisasi</a>
+                <a href="{{ route('pejabat.index') }}" class="collapse-item">Pejabat Struktural</a>
+                <a class="collapse-item" href={{ route('link-terkait.index') }}>Link Terkait</a>
+                <a href="{{ route('admin-denah-kantor') }}" class="collapse-item">Denah Kantor</a>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('news.index') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Berita</span></a>
+        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
+            aria-controls="collapseFive">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Program Kegiatan</span>
+        </a>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Master Data :</h6> --}}
+                <a class="collapse-item" href="{{ route('news.index') }}">Berita Kegiatan</a>
+                <a class="collapse-item" href="{{ route('gallery.index') }}">Galery</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('unit-kerja.index') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Unit Kerja</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('sakip.index') }}">
             <i class="fas fa-fw fa-table"></i>
-            <span>Sakip</span></a>
+            <span>Dokument & Publikasi</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('gallery.index') }}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Galery</span></a>
+        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+            aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Masyarakat</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Master Data :</h6> --}}
+                <a class="collapse-item" href="{{ route('admin-pengaduan.index') }}">Pengaduan</a>
+                <a class="collapse-item" href="{{ route('admin-survey.index') }}">Survey</a>
+            </div>
+        </div>
+    </li>
+
+    @auth
+        @if (Auth::user()->roles == 'SUPERADMIN')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin-users') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Admin</span></a>
+            </li>
+        @endif
+    @endauth
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+            aria-controls="collapseFour">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Tautan</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Master Data :</h6> --}}
+                <a class="collapse-item" href={{ route('admin-foto-beranda') }}>Foto Beranda</a>
+                <a class="collapse-item" href={{ route('admin-tautan-menu') }}>Tautan Menu</a>
+                <a class="collapse-item" href={{ route('admin-running-text') }}>Running Text</a>
+                <a class="collapse-item" href={{ route('admin-media-sosial') }}>Media Sosial</a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin-pengaduan.index') }}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Pengaduan</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin-survey.index') }}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Survey</span></a>
+        <a class="nav-link" href="{{ route('mitra-kerja.index') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Mitra Kerja</span></a>
     </li>
 
     <li class="nav-item">

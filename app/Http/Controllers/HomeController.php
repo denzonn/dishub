@@ -2,24 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\HomePhoto;
 use App\Models\GalleryKegiatan;
 use App\Models\Job;
 use App\Models\News;
 use App\Models\PejabatStructural;
+use App\Models\RunningText;
 use App\Models\Sakip;
 use App\Models\StructureOrganisation;
+use App\Models\ViewPage;
 use App\Models\VisiMisi;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        // Membuat construct ketika halaman di click
+        ViewPage::create([
+            'view' => 1
+        ]);
+
+        $running = RunningText::all();
+
         $news = News::take(4)->get();
 
         $gallery = GalleryKegiatan::take(8)->get();
+
+        $carousel = HomePhoto::all();
+
         return view('pages.home', [
             'news' => $news,
-            'gallery' => $gallery
+            'gallery' => $gallery,
+            'carousel' => $carousel,
+            'running' => $running
         ]);
     }
 

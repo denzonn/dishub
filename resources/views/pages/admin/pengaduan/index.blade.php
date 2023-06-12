@@ -48,6 +48,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 10%">No</th>
+                                            <th style="width: 20%">Nik</th>
                                             <th style="width: 20%">Nama</th>
                                             <th style="width: 20%">Email</th>
                                             <th style="width: 30%">Judul</th>
@@ -59,6 +60,7 @@
                                         @forelse ($pengaduan as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->nik_pengadu }}</td>
                                                 <td>{{ $item->nama_pengadu }}</td>
                                                 <td>{{ $item->email_pengadu }}</td>
                                                 <td>{{ $item->judul_pengaduan }}</td>

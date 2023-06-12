@@ -12,18 +12,24 @@ class Jawaban extends Model
     protected $table = 'jawabans';
 
     protected $fillable = [
-        'pertanyaan_id',
-        'jawaban',
+        'survey_id',
+        'pertanyaans_id',
+        'bidangs_id',
         'options_id'
     ];
 
     public function pertanyaan()
     {
-        return $this->belongsTo(Pertanyaan::class);
+        return $this->belongsTo(Pertanyaan::class, 'pertanyaans_id', 'id');
+    }
+
+    public function bidang()
+    {
+        return $this->belongsTo(Bidang::class, 'bidangs_id', 'id');
     }
 
     public function options()
     {
-        return $this->belongsTo(Option::class);
+        return $this->belongsTo(Option::class, 'options_id', 'id');
     }
 }

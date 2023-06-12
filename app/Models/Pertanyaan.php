@@ -13,11 +13,11 @@ class Pertanyaan extends Model
 
     protected $fillable = [
         'pertanyaan',
-        'options_id'
+        'bidangs_id'
     ];
 
-    public function options()
+    public function bidang()
     {
-        return $this->belongsTo(Option::class);
+        return $this->belongsTo(Bidang::class, 'bidangs_id', 'id');
     }
 }
