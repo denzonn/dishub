@@ -69,7 +69,7 @@
         </div> <!-- .container -->
     </div> <!-- .page-section -->
 
-    <div class="page-section bg-light" id="gallery">
+    <div class="page-section" id="gallery">
         <div class="container">
             <div class="text-center wow fadeInUp">
                 <div class="subhead">Galery Foto</div>
@@ -90,6 +90,37 @@
             </div>
         </div> <!-- .container -->
     </div> <!-- .page-section -->
+
+
+    <div class="page-section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="section-title">
+                        <h2>Survei Kepuasan Masyarakat</h2>
+                        <p>Pemerintah berupaya meningkatkan kualitas pelayanan masyarakat demi tercapainya harapan dan
+                            tuntutan publik sesuai Keputusan Menteri Pendayagunaan Aparatur Negara Nomor 14 Tahun 2017
+                            tentang Pedoman Umum Penyusunan Survei Kepuasan Masyarakat Unit Penyelenggara Pelayanan Publik.
+                            Mengacu pada hal tersebut, maka Tim Survei dan Pengolah Data Survei Kepuasan Masyarakat (SKM)
+                            Dinas Perhubungan Provinsi Sulawesi Selatan telah melakukan pengukuran Survei
+                            Kepuasaan Masyarakat terhadap pelayanan. <br><br>
+                            <a href="{{ route('form-survey') }}" class="btn btn-primary">Mulai Survei</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="image">
+                        <img src="{{ asset('frontend/img/survey.png') }}" alt="image" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
 @endsection
 
 @push('addon-script')

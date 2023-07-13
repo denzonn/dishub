@@ -18,9 +18,9 @@
     @include('includes.navbar')
 
     @yield('content')
-    {{-- <audio src="{{ asset('frontend/img/instrumen.mp3') }}" autoplay loop>
+    <audio src="{{ asset('frontend/img/instrumen.mp3') }}" autoplay loop>
 
-    </audio> --}}
+    </audio>
 
     @include('includes.footer')
 

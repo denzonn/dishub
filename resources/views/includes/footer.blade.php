@@ -2,7 +2,7 @@
     style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{ asset('frontend/img/flyover.png') }});">
     <div class="container">
         <div class="row mb-5">
-            <div class="col-12 col-md-6 col-lg-4 py-3">
+            <div class="col-12 col-md-6 col-lg-3 py-3">
                 <div class="image">
                     <img src="{{ asset('frontend/img/logoperhubungan.png') }}" alt="">
                     <div>Website Resmi Dinas Perhubungan Provinsi Sulawesi Selatan</div>
@@ -37,17 +37,51 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <h5 style="color: #fff">Link Terkait :</h5>
-                @php
-                    $link = App\Models\LinkTerkait::all();
-                @endphp
-                @foreach ($link as $item)
-                    <p class="mt-0 mb-1"><a style="text-decoration: none;" target="_blank"
-                            href="{{ $item->link }}">{{ $item->nama }}</a></p>
-                @endforeach
+            <div class="col-12 col-md-6 col-lg-3">
+                <div>
+                    <h5 style="color: #fff">Link Terkait :</h5>
+                    @php
+                        $link = App\Models\LinkTerkait::all();
+                    @endphp
+                    @foreach ($link as $item)
+                        <p class="mt-0 mb-1"><a style="text-decoration: none;" target="_blank"
+                                href="{{ $item->link }}">{{ $item->nama }}</a></p>
+                    @endforeach
+                </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 py-3">
+            <div class="col-12 col-md-6 col-lg-3 py-3">
+                @php
+                    // Count semua data yang ada di ViewPages di field view
+                    $viewPages = App\Models\ViewPage::count();
+                    
+                    // Cek datanya untuk hari ini
+                    $viewPagesToday = App\Models\ViewPage::whereDate('created_at', now())->count();
+                    
+                    // Cek datanya dari tanggal sekarang sampai 1 minggu kedepan
+                    $viewPagesWeek = App\Models\ViewPage::whereBetween('created_at', [now()->subWeek(1), now()])->count();
+                    
+                    // Cek datanya dari tanggal sekarang sampai 1 bulan kedepan
+                    $viewPagesMonth = App\Models\ViewPage::whereBetween('created_at', [now()->subMonth(1), now()])->count();
+                    
+                    $viewall = App\Models\ViewPage::count();
+                @endphp
+                <div>
+                    <p style="font-size: 1.3rem; color: #fff">Statistik Pengujung</p>
+                    <p style="color: #fff">
+                        Pengunjung Hari Ini : {{ $viewPagesToday }}
+                    </p>
+                    <p style="color: #fff">
+                        Pengunjung Minggu Ini : {{ $viewPagesWeek }}
+                    </p>
+                    <p style="color: #fff">
+                        Pengunjung Bulan Ini : {{ $viewPagesMonth }}
+                    </p>
+                    <p style="color: #fff">
+                        Total Pengunjung : {{ $viewall }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 py-3">
                 <div class="maps">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1987.0043376631588!2d119.51050063967284!3d-5.102295900421244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefb7fca0b7d27%3A0xd762f42f936eb229!2sDinas%20Perhubungan%20Provinsi%20Sulawesi%20Selatan!5e0!3m2!1sid!2sid!4v1683515773201!5m2!1sid!2sid"
@@ -56,6 +90,7 @@
                     </iframe>
                 </div>
             </div>
+
         </div>
 
         <p class="text-center" id="copyright">Copyright &copy; 2023. All rights reserved | <a

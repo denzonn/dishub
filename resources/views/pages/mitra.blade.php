@@ -9,7 +9,7 @@
         <div class="container">
             <div class="content">
                 <div class="row">
-                    @foreach ($mitra as $item)
+                    @forelse ($mitra as $item)
                         <div class="col-6 col-lg-4">
                             <div class="card ">
                                 <div class="card-body p-0">
@@ -21,7 +21,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12">
+                            <h3 class="text-center" style="font-family: 'Poppins', sans-serif">Tidak ada Mitra Kerja</h3>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
